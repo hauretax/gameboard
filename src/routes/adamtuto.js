@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import GamepadManager from "../utils/GamepadManager";
 
 export default function Adamtuto() {
     const canvasRef = useRef(null);
@@ -12,7 +13,6 @@ export default function Adamtuto() {
     };
 
     let controller = {
-        index: 0,
         up: false,
         down: false,
         left: false,
@@ -23,6 +23,7 @@ export default function Adamtuto() {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
+        const Gamepad = new GamepadManager();
 
         function setupCanvas() {
             canvas.width = window.innerWidth;
@@ -39,17 +40,6 @@ export default function Adamtuto() {
         window.addEventListener('resize', () => {
             setupCanvas();
         });
-
-        window.addEventListener('gamepadconnected', (event) => {
-            controller.index = event.gamepad.index;
-            console.log('Gamepad connected: ', controller.index);
-        });
-
-        window.addEventListener('gamepaddisconnected', (event) => {
-            controller.index = null;
-            console.log('Gamepad disconnected: ', controller.index);
-        });
-
 
         function clearScreen() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -72,7 +62,7 @@ export default function Adamtuto() {
         }
 
         function controllerInput() {
-            const gamepad = navigator.getGamepads()[controller.index];
+            const gamepad = Gamepad.getState();
             if (gamepad) {
 
                 controller.up = gamepad.buttons[12].pressed;

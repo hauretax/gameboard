@@ -1,12 +1,12 @@
 import './styles/default.css';
 import { Routes, Route } from "react-router-dom";
-import Adamtuto from './routes/adamtuto';
+import TestGamepad from './routes/testGamepad';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Adamtuto />} />
+        <Route path="/" element={<TestGamepad />} />
       </Routes>
     </>
   );

@@ -3,24 +3,22 @@ export default class GamepadManager {
      * Initializes the GamepadManager object and sets up event listeners for gamepad connection and disconnection.
      * Also starts the gamepad loop to update the gamepad state at each frame.
      */
+    controllerIndex = {
+        index: null,
+    };
+
     constructor() {
-        this.gamepad = null;
-        this.previousGamepadState = {};
-        this.currentGamepadState = {};
 
         window.addEventListener('gamepadconnected', (event) => {
             console.log('Gamepad connected:', event.gamepad);
-            this.gamepad = event.gamepad;
+            this.controllerIndex = event.gamepad.index;
         });
 
         window.addEventListener('gamepaddisconnected', (event) => {
             console.log('Gamepad disconnected:', event.gamepad);
-            this.gamepad = null;
-            this.previousGamepadState = {};
-            this.currentGamepadState = {};
+            this.controllerIndex = null;
         });
 
-        this.startGamepadLoop();
     }
 
     updateGamepadState() {
@@ -35,23 +33,15 @@ export default class GamepadManager {
         };
     }
 
-    isButtonPressed(buttonIndex) {
-        return this.currentGamepadState.buttons[buttonIndex];
-    }
+    getState() {
+        if (this.controllerIndex === null) return null;
+        const gamepad = navigator.getGamepads()[this.controllerIndex];
+        if (!gamepad) return null;
 
-    isButtonJustPressed(buttonIndex) {
-        return this.currentGamepadState.buttons[buttonIndex] && !this.previousGamepadState.buttons[buttonIndex];
-    }
-
-    getAxisValue(axisIndex) {
-        return parseFloat(this.currentGamepadState.axes[axisIndex]);
-    }
-
-    startGamepadLoop() {
-        const updateGamepadLoop = () => {
-            this.updateGamepadState();
-            requestAnimationFrame(updateGamepadLoop);
+        return {
+            buttonsPressed: gamepad.buttons.map(el => el.pressed),
+            axes: gamepad.axes.map(axis => axis.toFixed(2)),
         };
-        updateGamepadLoop();
     }
+
 }
