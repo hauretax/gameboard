@@ -12,16 +12,18 @@ export default class Stick {
     }
 
     setDirection(x, y) {
-        if (Math.abs(x) < Stick.sensi && Math.abs(y) < Stick.sensi) {
-            this.direction = this.NONE;
-        }
-
-        else if (Math.abs(x) < Stick.sensi) {
-            this.direction = x > 0 ? this.UP : this.DOWN;
-        }
-
-        else if (Math.abs(y) < Stick.sensi) {
-            this.direction = y > 0 ? this.LEFT : this.RIGHT;
+        if (Math.abs(x) > Math.abs(y)) {
+            if (Math.abs(x) < Stick.sensi) {
+                this.direction = Stick.NONE;
+            } else {
+                this.direction = x > 0 ? Stick.RIGHT : Stick.LEFT;
+            }
+        } else {
+            if (Math.abs(y) < Stick.sensi) {
+                this.direction = Stick.NONE;
+            } else {
+                this.direction = y > 0 ? Stick.DOWN : Stick.UP;
+            }
         }
     }
 

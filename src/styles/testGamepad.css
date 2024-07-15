@@ -1,0 +1,3 @@
+#last_input>*:not(:last-child) {
+    margin-right: 100px;
+}

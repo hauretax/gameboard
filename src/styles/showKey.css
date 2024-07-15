@@ -1,0 +1,31 @@
+.showKey {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.keyboardKey {
+    background-color: #333;
+    border: 2px solid #555;
+    box-shadow: 0 4px #777;
+    height: 20px;
+}
+
+.gamepadKey {
+    width: 40px;
+    height: 40px;
+    background-color: #1a8cff;
+    border-radius: 100%;
+    box-shadow: 0 4px #003d80;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamepadKey>img {
+    width: 20px;
+    height: 20px;
+}

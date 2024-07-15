@@ -1,0 +1,23 @@
+.KeyTemplate {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.joysticks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.joystick {
+    border: black 1px solid;
+    height: 40px;
+}
+
+.joysticks>div>img {
+    height: 40px;
+}
