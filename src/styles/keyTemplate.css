@@ -7,6 +7,11 @@
     justify-content: space-around;
 }
 
+.row1 {
+    display: flex;
+    justify-content: space-between;
+}
+
 .joysticks {
     display: flex;
     flex-direction: column;
@@ -16,6 +21,7 @@
 .joystick {
     border: black 1px solid;
     height: 40px;
+    width: 40px;
 }
 
 .joysticks>div>img {

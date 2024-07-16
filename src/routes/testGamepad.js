@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import GamepadManager from "../utils/GamepadManager";
 import Stick from "../utils/Stick";
 import KeyTemplate from '../organisms/keyTemplate';
+import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 
 
 /**
@@ -28,6 +29,7 @@ import KeyTemplate from '../organisms/keyTemplate';
 export default function TestGamepad() {
     const [axes, setAxes] = useState([]);
     const [buttonsPressed, setButtonsPressed] = useState([]);
+    const mapConfig = mapConfigFile;
     const requestRef = useRef();
     //recording
     const [rec, setRec] = useState(false);
@@ -35,9 +37,9 @@ export default function TestGamepad() {
     //direction
     const [actualKeyCombinations, setactualKeyCombinations] = useState({ leftStickPosition: '', rightStickPosition: '', buttonPressed: '' });
     useEffect(() => {
+        console.log(mapConfig)
         recRef.current = rec;
     }, [rec]);
-
 
 
     useEffect(() => {
@@ -137,8 +139,10 @@ export default function TestGamepad() {
                     </div>
                 </div>}
             </div>
-
-            <KeyTemplate />
+            {mapConfig.plato.map(plato => {
+                return <KeyTemplate plato={plato} />
+            })
+            }
         </div>
     );
 }

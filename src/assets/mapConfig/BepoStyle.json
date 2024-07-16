@@ -1,0 +1,49 @@
+{
+    "id": 0,
+    "plato": [
+        {
+            "joystick": [
+                "none",
+                "none"
+            ],
+            "KeyTab": {
+                "L2": "a",
+                "R2": "u",
+                "L1": "i",
+                "UP": "e",
+                "SELECT": ",",
+                "START": "c",
+                "Y": "t",
+                "R1": "s",
+                "LEF": "r",
+                "RGHT": "n",
+                "X": "m",
+                "B": "space",
+                "BOT": "ç",
+                "A": "delet"
+            }
+        },
+        {
+            "joystick": [
+                "none",
+                "none"
+            ],
+            "KeyTab": {
+                "L2": "a",
+                "R2": "u",
+                "L1": "i",
+                "UP": "e",
+                "SELECT": ",",
+                "START": "c",
+                "Y": "t",
+                "R1": "s",
+                "LEF": "r",
+                "RGHT": "n",
+                "X": "m",
+                "B": "space",
+                "BOT": "ç",
+                "A": "delet"
+            }
+        }
+    ]
+}

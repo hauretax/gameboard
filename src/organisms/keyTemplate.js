@@ -7,7 +7,7 @@ import arrow from '../assets/images/arrow.png'
 
 const tmpJoystickTab = ['right', 'none'];
 
-const tmpKeyTab = ['a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'q', 's', 'd','f','g','h']
+const tmpKeyTab = ['a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'q', 's', 'd', 'f', 'g', 'h']
 
 function selectDirection(direction) {
     switch (direction) {
@@ -27,39 +27,39 @@ function selectDirection(direction) {
     }
 }
 
-export default function KeyTemplate() {
+export default function KeyTemplate({ plato }) {
     return (
         <div className='KeyTemplate'>
             <div className='joysticks'>
 
-                <div className='joystick'> <img src={arrow} alt='sry i dont care' style={selectDirection(tmpJoystickTab[0])} /></div>
-                <div className='joystick'> <img src={arrow} alt='sry i dont care' style={selectDirection(tmpJoystickTab[1])} /></div>
+                <div className='joystick'> <img src={arrow} alt='sry i dont care' style={selectDirection(plato.joystick[0])} /></div>
+                <div className='joystick'> <img src={arrow} alt='sry i dont care' style={selectDirection(plato.joystick[1])} /></div>
             </div>
             <div>
-                <div className='row'>
-                    <ShowKey keyboardKey={tmpKeyTab[0]} gamepadKey="L2" />
-                    <ShowKey keyboardKey={tmpKeyTab[1]} gamepadKey="R2" />
+                <div className='row1'>
+                    <ShowKey keyboardKey={plato.KeyTab.L2} gamepadKey="L2" />
+                    <ShowKey keyboardKey={plato.KeyTab.R2} gamepadKey="R2" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={tmpKeyTab[3]} gamepadKey="L1" />
-                    <ShowKey keyboardKey={tmpKeyTab[4]} gamepadKey="UP" />
-                    <ShowKey keyboardKey={tmpKeyTab[5]} gamepadKeyImage={select} />
-                    <ShowKey keyboardKey={tmpKeyTab[6]} gamepadKeyImage={start} />
-                    <ShowKey keyboardKey={tmpKeyTab[7]} gamepadKey="Y" />
-                    <ShowKey keyboardKey={tmpKeyTab[8]} gamepadKey="R1" />
+                    <ShowKey keyboardKey={plato.KeyTab.L1} gamepadKey="L1" />
+                    <ShowKey keyboardKey={plato.KeyTab.UP} gamepadKey="UP" />
+                    <ShowKey keyboardKey={plato.KeyTab.SELECT} gamepadKeyImage={select} />
+                    <ShowKey keyboardKey={plato.KeyTab.START} gamepadKeyImage={start} />
+                    <ShowKey keyboardKey={plato.KeyTab.Y} gamepadKey="Y" />
+                    <ShowKey keyboardKey={plato.KeyTab.R1} gamepadKey="R1" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={tmpKeyTab[9]} gamepadKey="LEF" />
-                    <ShowKey keyboardKey={tmpKeyTab[10]} gamepadKey="RIG" />
-                    <ShowKey keyboardKey={tmpKeyTab[11]} gamepadKey="X" />
-                    <ShowKey keyboardKey={tmpKeyTab[12]} gamepadKey="B" />
+                    <ShowKey keyboardKey={plato.KeyTab.LEF} gamepadKey="LEF" />
+                    <ShowKey keyboardKey={plato.KeyTab.RGHT} gamepadKey="RIG" />
+                    <ShowKey keyboardKey={plato.KeyTab.X} gamepadKey="X" />
+                    <ShowKey keyboardKey={plato.KeyTab.B} gamepadKey="B" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={tmpKeyTab[13]} gamepadKey="BOT" />
-                    <ShowKey keyboardKey={tmpKeyTab[14]} gamepadKey="A" />
+                    <ShowKey keyboardKey={plato.KeyTab.BOT} gamepadKey="BOT" />
+                    <ShowKey keyboardKey={plato.KeyTab.A} gamepadKey="A" />
                 </div>
             </div>
         </div>
