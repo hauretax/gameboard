@@ -2,6 +2,7 @@
     "id": 0,
     "plato": [
         {
+            "id": 0,
             "joystick": [
                 "none",
                 "none"
@@ -24,8 +25,55 @@
             }
         },
         {
+            "id": 1,
             "joystick": [
-                "none",
+                "up",
+                "none"
+            ],
+            "KeyTab": {
+                "L2": "a",
+                "R2": "u",
+                "L1": "i",
+                "UP": "e",
+                "SELECT": ",",
+                "START": "c",
+                "Y": "t",
+                "R1": "s",
+                "LEF": "r",
+                "RGHT": "n",
+                "X": "m",
+                "B": "space",
+                "BOT": "ç",
+                "A": "delet"
+            }
+        },
+        {
+            "id": 2,
+            "joystick": [
+                "left",
+                "none"
+            ],
+            "KeyTab": {
+                "L2": "a",
+                "R2": "u",
+                "L1": "i",
+                "UP": "e",
+                "SELECT": ",",
+                "START": "c",
+                "Y": "t",
+                "R1": "s",
+                "LEF": "r",
+                "RGHT": "n",
+                "X": "m",
+                "B": "space",
+                "BOT": "ç",
+                "A": "delet"
+            }
+        },
+        {
+            "id": 3,
+            "joystick": [
+                "down",
                 "none"
             ],
             "KeyTab": {

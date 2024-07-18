@@ -2,10 +2,11 @@ import '../styles/testGamepad.css';
 import { useEffect, useState, useRef } from "react";
 import GamepadManager from "../utils/GamepadManager";
 import Stick from "../utils/Stick";
-import KeyTemplate from '../organisms/keyTemplate';
+import KeyList from '../organisms/keyList';
+import KeyTemplate from '../organisms/platoTemplate';
+
+
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
-
-
 /**
  * Représente une association entre une touche de clavier et une combinaison de contrôles sur une manette.
  * @typedef {Object} Key
@@ -19,6 +20,7 @@ import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
  *                                     12 = D-Pad Up, 13 = D-Pad Down,
  *                                     14 = D-Pad Left, 15 = D-Pad Right,
  *                                     16 = Guide.
+ * je compte rendre ca modulable plus tard pour pouvoir integrer tout sort de clvier
  */
 
 /**
@@ -37,7 +39,6 @@ export default function TestGamepad() {
     //direction
     const [actualKeyCombinations, setactualKeyCombinations] = useState({ leftStickPosition: '', rightStickPosition: '', buttonPressed: '' });
     useEffect(() => {
-        console.log(mapConfig)
         recRef.current = rec;
     }, [rec]);
 
@@ -92,9 +93,8 @@ export default function TestGamepad() {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-
-            <div>
+        <div className='testGamepad' >
+            <div className="gamepadInfo">
                 <h1>Stick gauches</h1>
                 <div>
                     {axes.map((axe, index) => (
@@ -121,28 +121,16 @@ export default function TestGamepad() {
                     ))}
                 </div>
             </div>
-            <div>
-                <button onClick={recording}>rec</button>
-                <button>save</button>
-                {rec && <div id='last_input' style={{ display: "flex" }}>
-                    <div>
-                        <h1>Stick droit</h1>
-                        {actualKeyCombinations.leftStickPosition}
-                    </div>
-                    <div>
-                        <h1>Stick gauche</h1>
-                        {actualKeyCombinations.rightStickPosition}
-                    </div>
-                    <div>
-                        <h1> touche</h1>
-                        {actualKeyCombinations.buttonPressed}
-                    </div>
-                </div>}
+            <div className='map'>
+                {mapConfig.plato.map(plato => {
+                    return <KeyTemplate key={plato.id} className='KeyTemplate' plato={plato} />
+                })
+                }
             </div>
-            {mapConfig.plato.map(plato => {
-                return <KeyTemplate plato={plato} />
-            })
-            }
+
+            <div className='keylist'>
+                <KeyList />
+            </div>
         </div>
     );
 }

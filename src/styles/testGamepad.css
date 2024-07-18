@@ -1,3 +1,23 @@
+.testGamepad {
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr;
+
+}
+.map {
+    overflow: scroll;
+    height: 100vh;
+}
+.keylist {
+    overflow: scroll;
+    height: 100vh;
+}
+
 #last_input>*:not(:last-child) {
     margin-right: 100px;
 }
+
+.platoTemplate:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+

@@ -1,13 +1,9 @@
 import ShowKey from '../molecules/showKey';
-import '../styles/keyTemplate.css';
+import '../styles/platoTemplate.css';
 import select from '../assets/images/PlayStation_button_Select.svg.png'
 import start from '../assets/images/PlayStation_button_Start.svg.png'
 
 import arrow from '../assets/images/arrow.png'
-
-const tmpJoystickTab = ['right', 'none'];
-
-const tmpKeyTab = ['a', 'z', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'q', 's', 'd', 'f', 'g', 'h']
 
 function selectDirection(direction) {
     switch (direction) {
@@ -27,9 +23,9 @@ function selectDirection(direction) {
     }
 }
 
-export default function KeyTemplate({ plato }) {
+export default function platoTemplate({ plato }) {
     return (
-        <div className='KeyTemplate'>
+        <div className='platoTemplate'>
             <div className='joysticks'>
 
                 <div className='joystick'> <img src={arrow} alt='sry i dont care' style={selectDirection(plato.joystick[0])} /></div>

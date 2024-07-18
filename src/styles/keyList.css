@@ -1,0 +1,28 @@
+.keyGrid {
+    display: flex;
+    flex-direction: column;
+}
+
+.keyGroup {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.keys {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.keyItem:not(:last-child) {
+    margin-right: 10px;
+}
+
+.keyItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    min-width: 35px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}

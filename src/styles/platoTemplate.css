@@ -1,4 +1,4 @@
-.KeyTemplate {
+.platoTemplate {
     display: flex;
 }
 
@@ -22,8 +22,12 @@
     border: black 1px solid;
     height: 40px;
     width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%
 }
 
 .joysticks>div>img {
-    height: 40px;
+    height: 30px;
 }
