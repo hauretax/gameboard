@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import GamepadManager from "../utils/GamepadManager";
 import Stick from "../utils/Stick";
 import KeyList from '../organisms/keyList';
-import KeyTemplate from '../organisms/platoTemplate';
+import PlatoTemplate from '../organisms/platoTemplate';
 
 
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
@@ -42,6 +42,12 @@ export default function TestGamepad() {
         recRef.current = rec;
     }, [rec]);
 
+    const setedKey = []
+    mapConfig.plato.forEach(plato => {
+        Object.entries(plato.KeyTab).forEach(([_, value]) => {
+            setedKey.push(value);
+        })
+    })
 
     useEffect(() => {
         const Gamepad = new GamepadManager();
@@ -51,10 +57,6 @@ export default function TestGamepad() {
         const recordOneInput = (leftStick, rightStick, buttonsPressed) => {
             const trueCount = buttonsPressed.filter(button => button === true).length
             if (trueCount === 1) {
-
-                setactualKeyCombinations({
-
-                })
                 setactualKeyCombinations({
                     leftStickPosition: leftStick.getDirection(),
                     rightStickPosition: rightStick.getDirection(),
@@ -123,13 +125,13 @@ export default function TestGamepad() {
             </div>
             <div className='map'>
                 {mapConfig.plato.map(plato => {
-                    return <KeyTemplate key={plato.id} className='KeyTemplate' plato={plato} />
+                    return <PlatoTemplate key={plato.id} className='KeyTemplate' plato={plato} />
                 })
                 }
             </div>
 
             <div className='keylist'>
-                <KeyList />
+                <KeyList setedKey={setedKey} />
             </div>
         </div>
     );

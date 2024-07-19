@@ -4,10 +4,12 @@
     grid-template-columns: 1fr 2fr 3fr;
 
 }
+
 .map {
     overflow: scroll;
     height: 100vh;
 }
+
 .keylist {
     overflow: scroll;
     height: 100vh;
@@ -21,3 +23,18 @@
     border-bottom: 1px solid #000;
 }
 
+@media (max-width: 1000px) {
+
+    .keylist,
+    .gamepadInfo {
+        display: none;
+    }
+
+    .testGamepad {
+        grid-template-columns: 1fr;
+    }
+
+    .map {
+        grid-column: 1 / -1;
+    }
+}

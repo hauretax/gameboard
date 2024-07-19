@@ -2,7 +2,12 @@
 
 import keyList from '../assets/mapConfig/KeyList.json';
 import '../styles/keyList.css';
-export default function KeyList() {
+export default function KeyList({ setedKey }) {
+
+
+    function keyIsSet(key) {
+        return (setedKey.indexOf(key) !== -1)
+    }
 
     return (
         <div className="key-list-container">
@@ -13,9 +18,10 @@ export default function KeyList() {
                         <h2>{type}</h2>
                         <div className={"keys " + type} >
                             {keys.map((key, index) => (
-                                <div key={index} className="keyItem">
-                                    {key}
-                                </div>
+                                !keyIsSet(key) ?
+                                    <div key={index} className="keyItem">
+                                        {key}
+                                    </div> : null
                             ))}
                         </div>
                     </div>

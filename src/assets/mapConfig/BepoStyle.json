@@ -4,8 +4,8 @@
         {
             "id": 0,
             "joystick": [
-                "none",
-                "none"
+                "NONE",
+                "NONE"
             ],
             "KeyTab": {
                 "L2": "a",
@@ -19,78 +19,216 @@
                 "LEF": "r",
                 "RGHT": "n",
                 "X": "m",
-                "B": "space",
+                "B": "Backspace",
                 "BOT": "ç",
-                "A": "delet"
+                "A": "Space"
             }
         },
         {
             "id": 1,
             "joystick": [
-                "up",
-                "none"
+                "UP",
+                "NONE"
             ],
             "KeyTab": {
-                "L2": "a",
-                "R2": "u",
-                "L1": "i",
-                "UP": "e",
-                "SELECT": ",",
-                "START": "c",
-                "Y": "t",
-                "R1": "s",
-                "LEF": "r",
-                "RGHT": "n",
-                "X": "m",
-                "B": "space",
-                "BOT": "ç",
-                "A": "delet"
+                "L2": "b",
+                "R2": "é",
+                "L1": "p",
+                "UP": "",
+                "SELECT": "",
+                "START": "v",
+                "Y": "o",
+                "R1": "^",
+                "LEF": "",
+                "RGHT": "",
+                "X": "d",
+                "B": "Tab",
+                "BOT": "",
+                "A": "sUPpr"
             }
         },
         {
             "id": 2,
             "joystick": [
-                "left",
-                "none"
+                "NONE",
+                "UP"
             ],
             "KeyTab": {
-                "L2": "a",
-                "R2": "u",
-                "L1": "i",
-                "UP": "e",
-                "SELECT": ",",
-                "START": "c",
-                "Y": "t",
-                "R1": "s",
-                "LEF": "r",
-                "RGHT": "n",
-                "X": "m",
-                "B": "space",
-                "BOT": "ç",
-                "A": "delet"
+                "L2": "à",
+                "R2": "ù",
+                "L1": "void",
+                "UP": "z",
+                "SELECT": ";",
+                "START": "",
+                "Y": "",
+                "R1": "void",
+                "LEF": "f",
+                "RGHT": "g",
+                "X": "",
+                "B": "",
+                "BOT": "void",
+                "A": ""
             }
         },
         {
             "id": 3,
             "joystick": [
-                "down",
-                "none"
+                "RIGHT",
+                "NONE"
             ],
             "KeyTab": {
-                "L2": "a",
-                "R2": "u",
-                "L1": "i",
-                "UP": "e",
-                "SELECT": ",",
-                "START": "c",
-                "Y": "t",
-                "R1": "s",
-                "LEF": "r",
-                "RGHT": "n",
-                "X": "m",
-                "B": "space",
-                "BOT": "ç",
-                "A": "delet"
+                "L2": "b",
+                "R2": "é",
+                "L1": "p",
+                "UP": "",
+                "SELECT": "",
+                "START": "è",
+                "Y": "^",
+                "R1": "$",
+                "LEF": "",
+                "RGHT": "",
+                "X": "<",
+                "B": ">",
+                "BOT": "",
+                "A": "="
+            }
+        },
+        {
+            "id": 4,
+            "joystick": [
+                "DOWN",
+                "NONE"
+            ],
+            "KeyTab": {
+                "L2": "\"",
+                "R2": "'",
+                "L1": "!",
+                "UP": "",
+                "SELECT": "",
+                "START": "@",
+                "Y": "#",
+                "R1": "%",
+                "LEF": "$",
+                "RGHT": "*",
+                "X": "(",
+                "B": ")",
+                "BOT": "",
+                "A": "+"
+            }
+        },
+        {
+            "id": 5,
+            "joystick": [
+                "LEFT",
+                "NONE"
+            ],
+            "KeyTab": {
+                "L2": "&",
+                "R2": "-",
+                "L1": "_",
+                "UP": "",
+                "SELECT": "",
+                "START": "\\",
+                "Y": "|",
+                "R1": ":",
+                "LEF": "",
+                "RGHT": "",
+                "X": "[",
+                "B": "]",
+                "BOT": "",
+                "A": "."
+            }
+        },
+        {
+            "id": 6,
+            "joystick": [
+                "NONE",
+                "RIGHT"
+            ],
+            "KeyTab": {
+                "L2": "0",
+                "R2": "1",
+                "L1": "2",
+                "UP": "3",
+                "SELECT": "void",
+                "START": "",
+                "Y": "",
+                "R1": "",
+                "LEF": "4",
+                "RGHT": "5",
+                "X": "",
+                "B": "",
+                "BOT": "6",
+                "A": ""
+            }
+        },
+        {
+            "id": 7,
+            "joystick": [
+                "NONE",
+                "DOWN"
+            ],
+            "KeyTab": {
+                "L2": "7",
+                "R2": "8",
+                "L1": "9",
+                "UP": "/",
+                "SELECT": "-",
+                "START": "",
+                "Y": "",
+                "R1": "",
+                "LEF": "{",
+                "RGHT": "}",
+                "X": "",
+                "B": "",
+                "BOT": "?",
+                "A": ""
+            }
+        },
+        {
+            "id": 8,
+            "joystick": [
+                "NONE",
+                "LEFT"
+            ],
+            "KeyTab": {
+                "L2": "h",
+                "R2": "j",
+                "L1": "k",
+                "UP": "l",
+                "SELECT": "q",
+                "START": "",
+                "Y": "",
+                "R1": "",
+                "LEF": "w",
+                "RGHT": "x",
+                "X": "",
+                "B": "",
+                "BOT": "y",
+                "A": ""
+            }
+        },
+        {
+            "id": 9,
+            "joystick": [
+                "UP",
+                "UP"
+            ],
+            "KeyTab": {
+                "L2": "Esc",
+                "R2": "Enter",
+                "L1": "k",
+                "UP": "",
+                "SELECT": "",
+                "START": "",
+                "Y": "",
+                "R1": "",
+                "LEF": "",
+                "RGHT": "",
+                "X": "",
+                "B": "",
+                "BOT": "",
+                "A": ""
             }
         }
     ]

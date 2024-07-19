@@ -4,26 +4,27 @@ import select from '../assets/images/PlayStation_button_Select.svg.png'
 import start from '../assets/images/PlayStation_button_Start.svg.png'
 
 import arrow from '../assets/images/arrow.png'
+import Stick from '../utils/Stick';
 
 function selectDirection(direction) {
     switch (direction) {
 
-        case 'none':
+        case Stick.NONE:
             return { display: 'none' }
-        case 'up':
+        case Stick.UP:
             return { transform: ' rotate(-90deg)' }
-        case 'down':
+        case Stick.DOWN:
             return { transform: ' rotate(90deg)' }
-        case 'left':
+        case Stick.LEFT:
             return { transform: ' rotate(-180deg)' }
-        case 'right':
+        case Stick.RIGHT:
             return { transform: ' rotate(0deg)' }
         default:
             return { display: 'none' }
     }
 }
 
-export default function platoTemplate({ plato }) {
+export default function PlatoTemplate({ plato }) {
     return (
         <div className='platoTemplate'>
             <div className='joysticks'>

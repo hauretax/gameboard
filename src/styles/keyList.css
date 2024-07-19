@@ -13,10 +13,6 @@
     flex-wrap: wrap
 }
 
-.keyItem:not(:last-child) {
-    margin-right: 10px;
-}
-
 .keyItem {
     display: flex;
     justify-content: center;
@@ -25,4 +21,7 @@
     min-width: 35px;
     padding: 5px;
     border: 1px solid #ccc;
+    
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
