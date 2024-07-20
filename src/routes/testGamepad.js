@@ -4,7 +4,7 @@ import GamepadManager from "../utils/GamepadManager";
 import Stick from "../utils/Stick";
 import KeyList from '../organisms/keyList';
 import PlatoTemplate from '../organisms/platoTemplate';
-
+import { useNavigate } from 'react-router-dom';
 
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 /**
@@ -41,7 +41,7 @@ export default function TestGamepad() {
     useEffect(() => {
         recRef.current = rec;
     }, [rec]);
-
+    const navigate = useNavigate();
     const setedKey = []
     mapConfig.plato.forEach(plato => {
         Object.entries(plato.KeyTab).forEach(([_, value]) => {
@@ -94,9 +94,14 @@ export default function TestGamepad() {
         setRec(true);
     };
 
+    const goToGamePage = () => {
+        navigate('/game');
+    };
+
     return (
         <div className='testGamepad' >
             <div className="gamepadInfo">
+                <button onClick={goToGamePage}>Go to Game Page</button>
                 <h1>Stick gauches</h1>
                 <div>
                     {axes.map((axe, index) => (
@@ -133,6 +138,6 @@ export default function TestGamepad() {
             <div className='keylist'>
                 <KeyList setedKey={setedKey} />
             </div>
-        </div>
+        </div >
     );
 }

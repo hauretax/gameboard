@@ -13,8 +13,8 @@ export default function GamePage() {
 
 
     const [axes, setAxes] = useState([]);
-    const [buttonsPressed, setButtonsPressed] = useState([]);
     const [plato, setPlato] = useState(mapConfig.plato[0]);
+    const [key, setKey] = useState('');
     const requestRef = useRef();
 
     //recording
@@ -31,6 +31,18 @@ export default function GamePage() {
                 //se serais plus propre de definire left et right joystick dans les json . mais je ne sait pas encors si je vais limiter ca a 2 joystick ou a uniquement des joystick . donc je laisse ca en tableaux c'est plus libre pour plus tard
                 return plato.joystick[0] === leftStickPosition && plato.joystick[1] === rightStickPosition
             }))
+
+        }
+        //ici je recuperer la list de tout les boutons presser mais je n'en utiliserais que un ca peu etre interessant plus tard de pouvoir fair des combinaison de bouton et de fair l'entrer sur le relachement des touche .
+        const selectKey = (buttonsPressed) => {
+            const buttonPresse = buttonsPressed.findIndex(button => button === true);
+            if (buttonPresse == -1)
+                return;
+            console.log(buttonPresse)
+            console.log(mapConfig.buttonId[buttonPresse])
+            console.log(plato.KeyTab[mapConfig.buttonId[buttonPresse]])
+
+            setKey(plato.KeyTab[mapConfig.buttonId[buttonPresse]]);
         }
 
         const getGamepadsInfo = () => {
@@ -40,7 +52,7 @@ export default function GamePage() {
             rightStick.setDirection(gamepadState.axes[2], gamepadState.axes[3]);
             selectPlato({ leftStickPosition: leftStick.getDirection(), rightStickPosition: rightStick.getDirection() })
 
-            setButtonsPressed(gamepadState.buttonsPressed);
+            selectKey(gamepadState.buttonsPressed);
             setAxes(gamepadState.axes);
         };
 
@@ -63,7 +75,7 @@ export default function GamePage() {
     return (
         <div className='GamePage' >
             {plato != null ? <PlatoTemplate plato={plato} /> : null}
-            <DIV></DIV>
+            <div className='key'>{key}</div>
         </div >
     );
 }

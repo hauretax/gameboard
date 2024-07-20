@@ -1,5 +1,24 @@
 {
     "id": 0,
+    "buttonId": [
+        "A",
+        "B",
+        "X",
+        "Y",
+        "L1",
+        "R1",
+        "L2",
+        "R2",
+        "SELECT",
+        "START",
+        "LEFT_STICK",
+        "RIGHT_STICK",
+        "UP",
+        "DOWN",
+        "LEFT",
+        "RIGHT",
+        "MENU"
+    ],
     "plato": [
         {
             "id": 0,
