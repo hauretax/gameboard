@@ -1,0 +1,8 @@
+.gamePage {
+    display: flex;
+    align-items: center;
+}
+
+.key {
+    font-size: 10em;
+}

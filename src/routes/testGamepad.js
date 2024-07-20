@@ -1,9 +1,10 @@
 import '../styles/testGamepad.css';
 import { useEffect, useState, useRef } from "react";
 import GamepadManager from "../utils/GamepadManager";
+import Stick from "../utils/Stick";
 import KeyList from '../organisms/keyList';
 import PlatoTemplate from '../organisms/platoTemplate';
-import { useNavigate } from 'react-router-dom';
+
 
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 /**
@@ -32,8 +33,15 @@ export default function TestGamepad() {
     const [buttonsPressed, setButtonsPressed] = useState([]);
     const mapConfig = mapConfigFile;
     const requestRef = useRef();
+    //recording
+    const [rec, setRec] = useState(false);
+    const recRef = useRef(rec);
+    //direction
+    const [actualKeyCombinations, setactualKeyCombinations] = useState({ leftStickPosition: '', rightStickPosition: '', buttonPressed: '' });
+    useEffect(() => {
+        recRef.current = rec;
+    }, [rec]);
 
-    const navigate = useNavigate();
     const setedKey = []
     mapConfig.plato.forEach(plato => {
         Object.entries(plato.KeyTab).forEach(([_, value]) => {
@@ -43,11 +51,28 @@ export default function TestGamepad() {
 
     useEffect(() => {
         const Gamepad = new GamepadManager();
+        const leftStick = new Stick(0, 0);
+        const rightStick = new Stick(0, 0);
 
-     
+        const recordOneInput = (leftStick, rightStick, buttonsPressed) => {
+            const trueCount = buttonsPressed.filter(button => button === true).length
+            if (trueCount === 1) {
+                setactualKeyCombinations({
+                    leftStickPosition: leftStick.getDirection(),
+                    rightStickPosition: rightStick.getDirection(),
+                    buttonPressed: buttonsPressed.findIndex(button => button === true)
+                });
+            }
+        };
+
         const getGamepadsInfo = () => {
             const gamepadState = Gamepad.getState();
             if (gamepadState == null) return;
+            if (recRef.current) {
+                leftStick.setDirection(gamepadState.axes[0], gamepadState.axes[1]);
+                rightStick.setDirection(gamepadState.axes[2], gamepadState.axes[3]);
+                recordOneInput(leftStick, rightStick, gamepadState.buttonsPressed);
+            }
 
             setButtonsPressed(gamepadState.buttonsPressed);
             setAxes(gamepadState.axes);
@@ -63,14 +88,15 @@ export default function TestGamepad() {
         return () => cancelAnimationFrame(requestRef.current);
     }, []);
 
-    const goToGamePage = () => {
-        navigate('/game');
+
+
+    const recording = () => {
+        setRec(true);
     };
 
     return (
         <div className='testGamepad' >
             <div className="gamepadInfo">
-                <button onClick={goToGamePage}>Go to Game Page</button>
                 <h1>Stick gauches</h1>
                 <div>
                     {axes.map((axe, index) => (
@@ -107,6 +133,6 @@ export default function TestGamepad() {
             <div className='keylist'>
                 <KeyList setedKey={setedKey} />
             </div>
-        </div >
+        </div>
     );
 }
