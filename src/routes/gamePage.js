@@ -11,15 +11,10 @@ import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 export default function GamePage() {
     const mapConfig = mapConfigFile;
 
-
-    const [axes, setAxes] = useState([]);
     const [plato, setPlato] = useState(mapConfig.plato[0]);
     const [key, setKey] = useState('');
     const requestRef = useRef();
 
-    //recording
-    const [rec, setRec] = useState(false);
-    const recRef = useRef(rec);
     useEffect(() => {
         const Gamepad = new GamepadManager();
         const leftStick = new Stick(0, 0);
@@ -27,7 +22,6 @@ export default function GamePage() {
 
         const selectPlato = ({ leftStickPosition, rightStickPosition }) => {
             setPlato(mapConfig.plato.find(plato => {
-
                 //se serais plus propre de definire left et right joystick dans les json . mais je ne sait pas encors si je vais limiter ca a 2 joystick ou a uniquement des joystick . donc je laisse ca en tableaux c'est plus libre pour plus tard
                 return plato.joystick[0] === leftStickPosition && plato.joystick[1] === rightStickPosition
             }))
@@ -36,8 +30,7 @@ export default function GamePage() {
         //ici je recuperer la list de tout les boutons presser mais je n'en utiliserais que un ca peu etre interessant plus tard de pouvoir fair des combinaison de bouton et de fair l'entrer sur le relachement des touche .
         const selectKey = (buttonsPressed) => {
             const buttonPresse = buttonsPressed.findIndex(button => button === true);
-            if (buttonPresse == -1)
-                return;
+            if (buttonPresse === -1) return; //close
             console.log(buttonPresse)
             console.log(mapConfig.buttonId[buttonPresse])
             console.log(plato.KeyTab[mapConfig.buttonId[buttonPresse]])
@@ -47,13 +40,14 @@ export default function GamePage() {
 
         const getGamepadsInfo = () => {
             const gamepadState = Gamepad.getState();
-            if (gamepadState == null) return;
+            if (gamepadState == null) return; //close
+
+
             leftStick.setDirection(gamepadState.axes[0], gamepadState.axes[1]);
             rightStick.setDirection(gamepadState.axes[2], gamepadState.axes[3]);
-            selectPlato({ leftStickPosition: leftStick.getDirection(), rightStickPosition: rightStick.getDirection() })
 
+            selectPlato({ leftStickPosition: leftStick.getDirection(), rightStickPosition: rightStick.getDirection() })
             selectKey(gamepadState.buttonsPressed);
-            setAxes(gamepadState.axes);
         };
 
         const gameLoop = () => {
@@ -64,13 +58,10 @@ export default function GamePage() {
         requestRef.current = requestAnimationFrame(gameLoop);
 
         return () => cancelAnimationFrame(requestRef.current);
-    }, [mapConfig.plato]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
-
-    const recording = () => {
-        setRec(true);
-    };
 
     return (
         <div className='GamePage' >
