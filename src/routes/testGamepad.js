@@ -7,6 +7,7 @@ import PlatoTemplate from '../organisms/platoTemplate';
 
 
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
+import { useNavigate } from 'react-router-dom';
 /**
  * Représente une association entre une touche de clavier et une combinaison de contrôles sur une manette.
  * @typedef {Object} Key
@@ -29,6 +30,7 @@ import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
  */
 
 export default function TestGamepad() {
+    const navigate = useNavigate();
     const [axes, setAxes] = useState([]);
     const [buttonsPressed, setButtonsPressed] = useState([]);
     const mapConfig = mapConfigFile;
@@ -94,9 +96,15 @@ export default function TestGamepad() {
         setRec(true);
     };
 
+    const goToGamePage = () => {
+        navigate('/game');
+    };
+
     return (
         <div className='testGamepad' >
             <div className="gamepadInfo">
+
+                <button onClick={goToGamePage}>Go to Game Page</button>
                 <h1>Stick gauches</h1>
                 <div>
                     {axes.map((axe, index) => (

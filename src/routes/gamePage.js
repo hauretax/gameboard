@@ -7,6 +7,7 @@ import PlatoTemplate from '../organisms/platoTemplate';
 
 
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
+import LetterFall from '../organisms/letterFall';
 
 export default function GamePage() {
     const mapConfig = mapConfigFile;
@@ -59,11 +60,10 @@ export default function GamePage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
-
     return (
         <div className='gamePage' >
             {plato != null ? <PlatoTemplate plato={plato} /> : null}
+            <LetterFall />
             <div className='key'>{key}</div>
         </div >
     );
