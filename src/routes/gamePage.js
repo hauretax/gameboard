@@ -12,7 +12,6 @@ export default function GamePage() {
   const [plato, setPlato] = useState(mapConfig.plato[0]);
   const [key, setKey] = useState('');
   const requestRef = useRef();
-  const letters = useSelector((state) => state.letters);
 
   useEffect(() => {
     const Gamepad = new GamepadManager();
