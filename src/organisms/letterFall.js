@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createAndAddLetter, removeLetter } from '../controler/lettersSlice';
 import '../styles/letterFall.css';
-import MovingLetters from '../utils/MovingLetters';
-
-const movingLetters = new MovingLetters();
 
 function getRandomCharacter() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -11,30 +10,27 @@ function getRandomCharacter() {
 }
 
 export default function LetterFall() {
+    const dispatch = useDispatch();
+    const letters = useSelector((state) => state.letters);
 
-    const [letters, setLetters] = useState([]);
-    movingLetters.setOnUpdate(() => {
-        const letters = movingLetters.getLetters()
-        setLetters([...letters]);
-    });
-
-    const addLetter = () => {
-        movingLetters.newLetter(getRandomCharacter());
-        const letters = movingLetters.getLetters();
-        setLetters([...letters]);
+    const addNewLetter = () => {
+        const randomKey = getRandomCharacter();
+        dispatch(createAndAddLetter(randomKey));
     };
 
     return (
         <div className="letterFall">
             <h1>Letter Fall</h1>
-            <button onClick={() => addLetter()}> add letter</button>
+            <button onClick={addNewLetter}>Add Letter</button>
             <div id='fall'>
                 {letters.map(letter => (
                     <div key={letter.id} className="fallingLetter">
                         {letter.key}
+                        {/* Ajout d'un bouton pour supprimer manuellement une lettre */}
+                        <button onClick={() => dispatch(removeLetter(letter.id))}>Remove</button>
                     </div>
                 ))}
             </div>
         </div>
-    )
+    );
 }
