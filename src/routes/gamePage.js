@@ -6,6 +6,7 @@ import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 import '../styles/gamePage.css';
 import LetterFall from '../organisms/LetterFall';
 import { useDispatch, useSelector } from 'react-redux';
+import { hit } from '../controler/lettersSlice';
 
 export default function GamePage() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function GamePage() {
   const [plato, setPlato] = useState(mapConfig.plato[0]);
   const [key, setKey] = useState('');
   const requestRef = useRef();
+  let lastButtonPressed = [];
 
   useEffect(() => {
     lettersRef.current = letters;
@@ -35,10 +37,20 @@ export default function GamePage() {
 
     const selectKey = (curentPlato, buttonsPressed) => {
       const buttonPresse = buttonsPressed.findIndex(button => button === true);
-      if (buttonPresse === -1 || curentPlato === null || curentPlato === undefined) return;
 
-      console.log(lettersRef.current); // Use ref to access latest letters
-      setKey(curentPlato.KeyTab[mapConfig.buttonId[buttonPresse]]);
+      //je suis pas super fiere de mon systéme de gestion des input je me prendrais la tete dessus plus tard
+      if (buttonPresse === -1) {
+        lastButtonPressed = [];
+      }
+      if (buttonPresse === -1 || curentPlato === null || curentPlato === undefined) return;
+      if (lastButtonPressed.includes(buttonPresse)) return;
+      lastButtonPressed.push(buttonPresse);
+
+
+      console.log(lettersRef.current);
+      const keyPressed = curentPlato.KeyTab[mapConfig.buttonId[buttonPresse]];
+      dispatch(hit(keyPressed));
+      setKey(keyPressed);
     };
 
     const getGamepadsInfo = () => {
@@ -72,6 +84,8 @@ export default function GamePage() {
       {plato != null ? <PlatoTemplate plato={plato} /> : null}
       <LetterFall />
       <div className='key'>{key}</div>
+
+      <div className='score'>{letters.length}</div>
     </div>
   );
 }

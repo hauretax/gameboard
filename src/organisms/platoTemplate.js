@@ -48,8 +48,8 @@ export default function PlatoTemplate({ plato }) {
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={plato.KeyTab.LEF} gamepadKey="LEF" />
-                    <ShowKey keyboardKey={plato.KeyTab.RGHT} gamepadKey="RIG" />
+                    <ShowKey keyboardKey={plato.KeyTab.LEFT} gamepadKey="LEF" />
+                    <ShowKey keyboardKey={plato.KeyTab.RIGHT} gamepadKey="RIG" />
                     <ShowKey keyboardKey={plato.KeyTab.X} gamepadKey="X" />
                     <ShowKey keyboardKey={plato.KeyTab.B} gamepadKey="B" />
                 </div>
