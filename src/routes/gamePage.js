@@ -1,17 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import GamepadManager from '../utils/GamepadManager';
 import Stick from '../utils/Stick';
 import PlatoTemplate from '../organisms/platoTemplate';
 import mapConfigFile from '../assets/mapConfig/BepoStyle.json';
 import '../styles/gamePage.css';
 import LetterFall from '../organisms/LetterFall';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function GamePage() {
+  const dispatch = useDispatch();
   const mapConfig = mapConfigFile;
+  const letters = useSelector((state) => state.letters);
+  const lettersRef = useRef(letters);
   const [plato, setPlato] = useState(mapConfig.plato[0]);
   const [key, setKey] = useState('');
   const requestRef = useRef();
+
+  useEffect(() => {
+    lettersRef.current = letters;
+  }, [letters]);
 
   useEffect(() => {
     const Gamepad = new GamepadManager();
@@ -29,6 +36,8 @@ export default function GamePage() {
     const selectKey = (curentPlato, buttonsPressed) => {
       const buttonPresse = buttonsPressed.findIndex(button => button === true);
       if (buttonPresse === -1 || curentPlato === null || curentPlato === undefined) return;
+
+      console.log(lettersRef.current); // Use ref to access latest letters
       setKey(curentPlato.KeyTab[mapConfig.buttonId[buttonPresse]]);
     };
 
@@ -53,8 +62,13 @@ export default function GamePage() {
     return () => cancelAnimationFrame(requestRef.current);
   }, [mapConfig]);
 
+  const test = () => {
+    console.log(letters);
+  }
+
   return (
     <div className='gamePage'>
+      <button onClick={test}>test</button>
       {plato != null ? <PlatoTemplate plato={plato} /> : null}
       <LetterFall />
       <div className='key'>{key}</div>
