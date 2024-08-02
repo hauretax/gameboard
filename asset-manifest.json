@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/gameboard/static/css/main.5887e5f1.css",
+    "main.js": "/gameboard/static/js/main.51d65e78.js",
+    "static/js/453.a6c37886.chunk.js": "/gameboard/static/js/453.a6c37886.chunk.js",
+    "static/media/PlayStation_button_Start.svg.png": "/gameboard/static/media/PlayStation_button_Start.svg.74a6adb60c5085e6b0d8.png",
+    "static/media/arrow.png": "/gameboard/static/media/arrow.d8771a00b5ba36250fef.png",
+    "static/media/PlayStation_button_Select.svg.png": "/gameboard/static/media/PlayStation_button_Select.svg.a2effd24dee4be9c8c27.png",
+    "index.html": "/gameboard/index.html",
+    "main.5887e5f1.css.map": "/gameboard/static/css/main.5887e5f1.css.map",
+    "main.51d65e78.js.map": "/gameboard/static/js/main.51d65e78.js.map",
+    "453.a6c37886.chunk.js.map": "/gameboard/static/js/453.a6c37886.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5887e5f1.css",
+    "static/js/main.51d65e78.js"
+  ]
+}
