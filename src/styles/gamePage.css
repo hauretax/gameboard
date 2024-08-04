@@ -7,3 +7,17 @@
 .key {
     font-size: 10em;
 }
+
+.map {
+    overflow: scroll;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.notSelected {
+    opacity: 0.5;
+}

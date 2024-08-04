@@ -7,11 +7,13 @@ import '../styles/gamePage.css';
 import LetterFall from '../organisms/LetterFall';
 import { useDispatch, useSelector } from 'react-redux';
 import { hit } from '../controler/lettersSlice';
+import { addPrintableLetters } from '../controler/printableLettersSlice';
 
 export default function GamePage() {
   const dispatch = useDispatch();
   const mapConfig = mapConfigFile;
   const letters = useSelector((state) => state.letters);
+  const printableLetters = useSelector((state) => state.printableLetters);
   const lettersRef = useRef(letters);
   const [plato, setPlato] = useState(mapConfig.plato[0]);
   const [key, setKey] = useState('');
@@ -21,6 +23,10 @@ export default function GamePage() {
   useEffect(() => {
     lettersRef.current = letters;
   }, [letters]);
+
+  useEffect(() => {
+    lettersRef.current = printableLetters;
+  }, [printableLetters]);
 
   useEffect(() => {
     const Gamepad = new GamepadManager();
@@ -78,14 +84,51 @@ export default function GamePage() {
     console.log(letters);
   }
 
+  const addPlato = (platoId) => {
+    console.log(platoId);
+    const plato = mapConfig.plato.find(plato => plato.id === platoId);
+    //mettre les non selectionner en gris
+    mapConfig.plato.forEach(plato => {
+      plato.selected = false;
+    });
+    plato.selected = true;
+    console.log(plato);
+    Object.entries(plato.KeyTab).forEach(([buttonId, key]) => {
+      if (key && key !== "void" && key !== "" &&
+        !["Space", "Backspace", "Tab", "Enter", "Esc"].includes(key)) {
+        if (key.length === 1) {
+          dispatch(addPrintableLetters(key));
+        }
+        else if (key.length > 1) {
+          dispatch(addPrintableLetters(key.slice(0, 1)));
+        }
+      }
+    });
+  }
+
+
   return (
     <div className='gamePage'>
       <button onClick={test}>test</button>
+
+      <button onClick={addPlato}>test2</button>
       {plato != null ? <PlatoTemplate plato={plato} /> : null}
       <LetterFall />
       <div className='key'>{key}</div>
 
       <div className='score'>{letters.length}</div>
+      <div className='map' onClick={() => console.log('click')}>
+        {mapConfig.plato.map(plato =>
+          <div
+            className={plato.selected ? 'selected' : 'notSelected'}
+            onClick={() => {
+              console.log('Plato clicked:', plato.id);
+              addPlato(plato.id);
+            }}>
+            <PlatoTemplate key={plato.id} plato={plato} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
