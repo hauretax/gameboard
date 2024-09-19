@@ -25,6 +25,7 @@ export default class Stick {
                 this.direction = y > 0 ? Stick.DOWN : Stick.UP;
             }
         }
+        return this.direction
     }
 
     getDirection() {

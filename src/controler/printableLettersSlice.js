@@ -2,14 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const printableLettersSlice = createSlice({
     name: 'printableLetters',
-    initialState: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    initialState: [],
     reducers: {
         addPrintableLetters: (state, action) => {
             state.push(action.payload);
         },
-
         removePrintableLetters: (state, action) => {
-
+            state = state.filter((letter) => letter !== action.payload);
         },
         toString: (state) => {
             return state.join(', ').replace(/ , $/, '');

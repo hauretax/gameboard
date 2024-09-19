@@ -34,29 +34,29 @@ export default function PlatoTemplate({ plato }) {
             </div>
             <div>
                 <div className='row1'>
-                    <ShowKey keyboardKey={plato.KeyTab.L2} gamepadKey="L2" />
-                    <ShowKey keyboardKey={plato.KeyTab.R2} gamepadKey="R2" />
+                    <ShowKey keyboardKey={plato.keys.L2} gamepadKey="L2" />
+                    <ShowKey keyboardKey={plato.keys.R2} gamepadKey="R2" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={plato.KeyTab.L1} gamepadKey="L1" />
-                    <ShowKey keyboardKey={plato.KeyTab.UP} gamepadKey="UP" />
-                    <ShowKey keyboardKey={plato.KeyTab.SELECT} gamepadKeyImage={select} />
-                    <ShowKey keyboardKey={plato.KeyTab.START} gamepadKeyImage={start} />
-                    <ShowKey keyboardKey={plato.KeyTab.Y} gamepadKey="Y" />
-                    <ShowKey keyboardKey={plato.KeyTab.R1} gamepadKey="R1" />
+                    <ShowKey keyboardKey={plato.keys.L1} gamepadKey="L1" />
+                    <ShowKey keyboardKey={plato.keys.UP} gamepadKey="UP" />
+                    <ShowKey keyboardKey={plato.keys.SELECT} gamepadKeyImage={select} />
+                    <ShowKey keyboardKey={plato.keys.START} gamepadKeyImage={start} />
+                    <ShowKey keyboardKey={plato.keys.Y} gamepadKey="Y" />
+                    <ShowKey keyboardKey={plato.keys.R1} gamepadKey="R1" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={plato.KeyTab.LEFT} gamepadKey="LEF" />
-                    <ShowKey keyboardKey={plato.KeyTab.RIGHT} gamepadKey="RIG" />
-                    <ShowKey keyboardKey={plato.KeyTab.X} gamepadKey="X" />
-                    <ShowKey keyboardKey={plato.KeyTab.B} gamepadKey="B" />
+                    <ShowKey keyboardKey={plato.keys.LEFT} gamepadKey="LEF" />
+                    <ShowKey keyboardKey={plato.keys.RIGHT} gamepadKey="RIG" />
+                    <ShowKey keyboardKey={plato.keys.X} gamepadKey="X" />
+                    <ShowKey keyboardKey={plato.keys.B} gamepadKey="B" />
                 </div>
 
                 <div className='row'>
-                    <ShowKey keyboardKey={plato.KeyTab.BOT} gamepadKey="BOT" />
-                    <ShowKey keyboardKey={plato.KeyTab.A} gamepadKey="A" />
+                    <ShowKey keyboardKey={plato.keys.BOT} gamepadKey="BOT" />
+                    <ShowKey keyboardKey={plato.keys.A} gamepadKey="A" />
                 </div>
             </div>
         </div>

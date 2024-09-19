@@ -46,7 +46,7 @@ export default function TestGamepad() {
 
     const setedKey = []
     mapConfig.plato.forEach(plato => {
-        Object.entries(plato.KeyTab).forEach(([_, value]) => {
+        Object.entries(plato.keys).forEach(([_, value]) => {
             setedKey.push(value);
         })
     })
